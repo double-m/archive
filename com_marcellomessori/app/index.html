@@ -1,0 +1,165 @@
+<!doctype html>
+<html class="no-js">
+  
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="/favicon.ico" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon">
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!--<link rel="stylesheet" href="styles/style.css">-->
+    <!-- endbuild -->
+  </head>
+  
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="container">
+      
+      <div class="header">
+        <h1 class="text-muted">
+          <span data-bind="name"></span> <span data-bind="surname"></span>
+          <br />
+        </h1>
+        <table class="small">
+          <tr>
+            <td>&gt;&nbsp;</td><td data-i18n="page.subtitle"></td>
+          </tr>
+        </table>
+      </div>
+      
+      <div class="inner-padding">
+        
+        <div class="spacer-10"></div>
+        
+        <table class="utility-bar">
+          <tr>
+            <td class="cookie-policy">
+              <div><a href="#" id="cookie-policy-button">cookies</a></div>
+            </td>
+            <td class="lang-selector"></td>
+          </tr>
+          <tr id="cookie-policy-description">
+            <td colspan="2" data-i18n="[html]page.cookie-policy"></td>
+          </tr>
+        </table>
+        
+        <div class="spacer-5"></div>
+        
+        <div class="row">
+            <div class="col-sm-6 key"><strong><span  data-i18n="page.email"></span></strong></div>
+          <div class="col-sm-6 text-info">
+            <a href="#" data-bind="emailAddr">
+              <i class="fa fa-envelope-square"></i><span></span>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 key"><strong data-i18n="page.mobile"></strong></div>
+          <div class="col-sm-6 text-info">
+            <a href="#" data-bind="mobileNum">
+               <i class="fa fa-phone"></i><span></span>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 key"><strong data-i18n="page.location"></strong></div>
+          <div class="col-sm-6 text-info">
+            <a href="#" data-bind="locationLink">
+              <i class="fa fa-map-marker"></i><span></span>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 key"><strong><span data-i18n="page.vat"></span></strong></div>
+          <div class="col-sm-6 text-info">
+            <span class="a" data-bind="vatCode">
+              <i class="fa fa-print"></i><span></span>
+            </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 key"><strong>CodeEval</strong></div>
+          <div class="col-sm-6 text-info">
+            <a href="#" data-bind="codeEvalUrl">
+              <i class="fa fa-coffee"></i><span></span>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 key"><strong>GitHub</strong></div>
+          <div class="col-sm-6 text-info">
+            <a href="#" data-bind="gitHubUrl">
+              <i class="fa fa-github-square"></i><span></span>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 key"><strong>LinkedIn</strong></div>
+          <div class="col-sm-6 text-info">
+            <a href="#" data-bind="linkedInUrl">
+              <i class="fa fa-linkedin-square"></i><span></span>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 key"><strong><span data-i18n="page.website"></span></strong></div>
+          <div class="col-sm-6 text-info">
+            <a href="#" data-bind="webSiteUrl">
+              <i class="fa fa-globe"></i><span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="spacer-15"></div>
+
+      <div class="footer">
+        <div class="spacer-15"></div>
+        <div class="qrcode-wrapper">
+          <a href="" id="vcard" download="contacts.vcf">
+            <img class="qrcode" alt="vcard as qrcode" src="images/20140720_vcard_marcello_messori.png" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/i18next/i18next.js"></script>
+    <!-- endbower -->
+    <script src="app/scripts/vendor/google-analytics.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({app,.tmp}) scripts/plugins.js -->
+    <script src="scripts/arraymultiplier.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({app,.tmp}) scripts/data.js -->
+    <script src="scripts/data-placeholder.js"></script>
+    <script src="../config/data/data.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/data-bind.js"></script>
+    <script src="scripts/cookie-policy.js"></script>
+    <!-- endbuild -->
+    
+    <!-- build:js({app,.tmp}) scripts/generators.js -->
+    <script src="scripts/vcard.js"></script>
+    <!-- endbuild -->
+
+  </body>
+  
+</html>

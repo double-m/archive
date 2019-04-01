@@ -1,0 +1,8 @@
+#Debian related Os
+#"""Activate sysstat and restart it."""
+---
+- name: Enable sysstat
+  replace: dest=/etc/default/sysstat regexp='ENABLED="false"' replace='ENABLED="true"'
+
+- name: Activate sysstat
+  service: name=sysstat state=restarted enabled=yes

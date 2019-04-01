@@ -1,0 +1,12 @@
+# Debian related os
+
+---
+
+- name: Install nodejs
+  when: ansible_distribution == 'Ubuntu'
+  apt: name=nodejs-legacy state=present
+
+- name: Install npm
+  when: ansible_distribution == 'Ubuntu'
+  apt: name=npm state=present
+

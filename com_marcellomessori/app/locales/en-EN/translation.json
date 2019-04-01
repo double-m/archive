@@ -1,0 +1,11 @@
+{
+  "page": {
+    "cookie-policy": "This site uses Google Analytics' cookies for statistics, with IP anonymization; for details see Google Analytic's <a target=\"_blank\" href=\"https://support.google.com/analytics/answer/6004245\">privacy policy</a> and <a target=\"_blank\" href=\"http://www.google.com/analytics/terms/us.html\">terms of service</a>.",
+    "subtitle": "One Page Website Subtitle",
+    "email": "E-Mail",
+    "mobile": "Mobile",
+    "location": "Location",
+    "vat": "VAT",
+    "website": "Website"
+  }
+}

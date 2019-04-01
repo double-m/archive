@@ -1,0 +1,9 @@
+- name: grant access as user git via ssh - add user if absent
+  user: name="{{ git_user }}"
+
+- name: grant access as user git via ssh - create /home/git/.ssh if absent
+  file: path="{{ git_user_ssh_dir }}" state=directory owner="{{ git_user }}" group="{{ git_group }}" mode="0700"
+
+- name: grant access as user git via ssh - create /home/git/.ssh/authorized_keys if absent
+  copy: src=authorized_keys dest="{{ git_user_authorized_keys }}" force=no owner="{{ git_user }}" group="{{ git_group }}" mode="0600"
+

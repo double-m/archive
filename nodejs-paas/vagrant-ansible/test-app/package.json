@@ -1,0 +1,16 @@
+{
+  "name": "hello",
+  "version": "1.0.0",
+  "description": "responds \"Hello World\" via HTTP on port 3000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@127.0.0.1:2222/opt/git/project.git"
+  },
+  "author": "",
+  "license": "ISC"
+}

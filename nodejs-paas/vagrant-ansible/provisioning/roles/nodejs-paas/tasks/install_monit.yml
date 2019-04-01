@@ -1,0 +1,7 @@
+# Debian related os
+
+---
+- name: Install monit
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  apt: name=monit state=present
+

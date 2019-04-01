@@ -1,0 +1,12 @@
+# Debian related OSs
+ 
+---
+
+- include: apt_update.yml
+- include: apt_upgrade.yml 
+- include: locales.yml
+- include: apt_install_packages.yml
+- include: apt_clean.yml
+- include: update_sshd.yml
+- include: update_sysstat.yml
+

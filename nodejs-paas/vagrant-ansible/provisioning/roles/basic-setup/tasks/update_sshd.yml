@@ -1,0 +1,11 @@
+#Debian related Os
+#"""Disable DNS lookup to speed up ssh connections."""
+---
+
+- name: Remove 'UseDNS yes' in /etc/ssh/sshd_config
+  lineinfile: dest=/etc/ssh/sshd_config
+              state=absent line="UseDNS yes"
+
+- name: Insert 'UseDNS no' in /etc/ssh/sshd_config
+  lineinfile: dest=/etc/ssh/sshd_config
+              state=present line="UseDNS no"

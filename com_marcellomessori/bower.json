@@ -1,0 +1,12 @@
+{
+  "name": "com-marcellomessori",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "font-awesome": "~4.2.0",
+    "i18next": "~1.10.2"
+  },
+  "devDependencies": {
+    "chai": "~1.8.0"
+  }
+}

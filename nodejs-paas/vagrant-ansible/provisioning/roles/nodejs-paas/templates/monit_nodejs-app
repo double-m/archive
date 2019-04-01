@@ -1,0 +1,11 @@
+#!monit
+set logfile "{{ monit_app_log_file }}"
+
+check process node with pidfile "{{ node_app_pid_file }}"
+    start program = "/sbin/start {{ node_app_name }}"
+    stop program  = "/sbin/stop  {{ node_app_name }}"
+    if failed port {{ node_app_port }} protocol HTTP
+        request /
+        with timeout 10 seconds
+        then restart
+

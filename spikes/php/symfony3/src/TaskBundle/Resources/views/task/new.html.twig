@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Task creation</h1>
+
+    {{ form_start(form) }}
+
+        {{ form_row(form.title) }}
+
+        {{ form_row(form.description) }}
+
+        <ul class="tags" data-prototype="{{ form_widget(form.tags.vars.prototype)|e }}">
+            {% for tag in form.tags %}
+                <li>{{ form_row(tag.name) }}</li>
+            {% endfor %}
+        </ul>
+
+        <ul>
+            <li>
+                <div>
+                    <input class="btn" type="submit" value="Create" />
+                </div>
+                <div>
+                    <a class="btn" href="{{ path('task_index') }}">Back to the list</a>
+                </div>
+            </li>
+        </ul>
+    {{ form_end(form) }}
+{% endblock %}

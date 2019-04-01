@@ -1,0 +1,24 @@
+- name: create a directory for the git project
+  file: path="{{ git_project_repo_dir }}" state=directory owner="{{ git_user }}"
+
+- name: initialize the git repository
+  shell: cd "{{ git_project_repo_dir }}" && git init --bare
+  args:
+    creates: "{{ git_project_repo_dir }}/config"
+  sudo_user: "{{ git_user }}"
+
+- name: create a directory for the clone repository
+  file: path="{{ git_project_clone_dir_last }}" state=directory owner="{{ git_user }}"
+
+- name: clone the git repository on the server in order to get the code
+  command: git clone "{{ git_project_repo_dir }}" "{{ git_project_clone_dir_last }}"
+  args:
+    creates: "{{ git_project_clone_dir_last }}/.git/config"
+  sudo_user: "{{ git_user }}"
+
+- name: create a symlink to the repository directory with the last update
+  file: src="{{ git_project_clone_dir_last }}" dest="{{ git_project_clone_dir_link }}" owner="{{ git_user }}" state=link
+
+- name: add a server-side hook
+  template: src=hooks_post-receive dest="{{ git_project_repo_dir }}/hooks/post-receive" owner="{{ git_user }}" group="{{ git_group }}" mode="0755"
+

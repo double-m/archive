@@ -1,0 +1,107 @@
+# Conky, a system monitor, based on torsmo
+#
+# Any original torsmo code is licensed under the BSD license
+#
+# All code written since the fork of torsmo is licensed under the GPL
+#
+# Please see COPYING for details
+#
+# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+# All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+ 
+alignment top_right
+background no
+border_width 0
+cpu_avg_samples 2
+default_color grey
+default_outline_color white
+default_shade_color white
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+ 
+use_xft yes
+xftfont DejaVu Sans Mono:size=12
+gap_x 20
+gap_y 20
+minimum_size 5 5
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window yes
+own_window_class Conky
+own_window_type desktop
+ 
+own_window_hints undecorated,below,skip_taskbar,skip_pager
+own_window_colour 000000
+own_window_argb_visual yes
+own_window_argb_value 125
+ 
+stippled_borders 0
+update_interval 2.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+ 
+update_interval_on_battery 3.0
+border_inner_margin 10
+double_buffer yes
+if_up_strictness link
+ 
+# interface template
+template0 ${if_up \1}\ ${color 00dddd}\1$color\ ${font :size=8}${totaldown \1}\ ↓\ /\ ${totalup \1}\ ↑${font}$alignr${color 00dd00}${font Monospace}${voffset -4}${addr \1}${font}${color}\n\ ${downspeedgraph\ \1\ 15,150\ dddddd\ ffffff}\ ↓\ $alignr\ ${upspeedgraph\ \1\ 15,150\ dddddd\ ffffff}\ ↑${font}\n$endif
+ 
+# title + values
+template1 ${color grey}\1\ ${alignr}\2
+ 
+# titles
+template2 ${color white}\1${color gray}${voffset 5}
+ 
+TEXT
+${color EAEAEA}${font GE Inspira:pixelsize=50}${time %H:%M}${font}${voffset -20}${offset 10}${color 990066}${font GE Inspira:pixelsize=30}${time %d} ${voffset -5}${color EAEAEA}${font GE Inspira:pixelsize=22}${time %B %Y}${font}${voffset 10}
+ 
+${color grey}Up:$color $uptime - Bat:$battery_time
+ 
+Frequency: ${color grey}$color $alignr$freq MHz ${cpugraph 15,150}
+ 
+${template2 Usages}
+${template1 RAM $mem} ${membar 10, 150}
+${template1 Swap $swap} ${swapbar 10,150}
+${template1 IO $diskio} ${diskiograph 17,150}
+${template1 CPU $cpu%} ${cpubar 10,150}
+${template1 / ${fs_used\ /}} ${fs_bar 10,150 /}
+ 
+${color grey}Processes:$color $processes  ${color grey}Running:$color $running_processes
+ 
+${template2 Networking}
+${template0 wlan0}\
+${template0 tun0}\
+${template0 eth0}\
+ 
+${template2 Top\ memory$alignr\ CPU%\ \ MEM\ \ \ }
+${color lightgrey} ${top_mem name 1} $alignr${top_mem cpu 1} ${top_mem mem_res 1}
+${color lightgrey} ${top_mem name 2} $alignr${top_mem cpu 2} ${top_mem mem_res 2}
+${color lightgrey} ${top_mem name 3} $alignr${top_mem cpu 3} ${top_mem mem_res 3}
+ 
+${template2 Top\ cpu\ \ \ \ \ \ \ \ \ \ \ \ \ PID\ \ \ CPU%\ \ \ MEM%}
+${color lightgrey} ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
+${color lightgrey} ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
+${color lightgrey} ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}

@@ -1,0 +1,17 @@
+# Debian related OSs                                                                                                                                                                                               
+---
+- name: Install locales package
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  action: apt name=locales state=present
+
+- name: define en_us.UTF-8 locale files
+  command: /usr/bin/localedef -f UTF-8 -i en_US en_US.UTF-8
+
+- name: set locale to UTF-8
+  when: ansible_distribution == 'Debian'
+  replace: dest=/etc/locale.gen regexp='^#*.en_us.UTF-8' replace='en_us.UTF-8'
+
+- name: regenerate locales
+  command: /usr/sbin/locale-gen
+  when: ansible_env[ "LANG" ] != "en_US.UTF-8"
+  

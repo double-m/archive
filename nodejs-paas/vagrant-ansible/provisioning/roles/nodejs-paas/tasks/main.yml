@@ -1,0 +1,21 @@
+# Debian related OSs                                                                                                                                                                                               
+---
+
+- include: install_nodejs.yml
+  tags: node
+
+- include: git_user.yml
+  tags: git,user
+
+- include: git_repo.yml
+  tags: git,repo
+
+- include: config_upstart.yml
+  tags: upstart
+
+- include: install_monit.yml
+  tags: monit
+
+- include: config_monit.yml
+  tags: monit
+

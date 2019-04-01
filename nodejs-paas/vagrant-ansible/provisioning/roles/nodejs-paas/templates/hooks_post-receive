@@ -1,0 +1,49 @@
+#!/bin/sh
+
+exit_code=0
+
+restore_previous_version () {
+  rm -rf "{{ git_project_clone_dir_last }}"
+  cp -a "{{ git_project_clone_dir_prev }}" "{{ git_project_clone_dir_last }}"
+  echo; echo "Error in updating the NodeJS application: keeping the previous version."; echo
+  exit_code=1
+}
+
+#
+# Preserve the previous installation
+#
+
+if test -d "{{ git_project_clone_dir_prev }}"; then
+  rm -rf "{{ git_project_clone_dir_prev }}"
+fi
+
+cp -a "{{ git_project_clone_dir_last }}" "{{ git_project_clone_dir_prev }}"
+
+rm "{{ git_project_clone_dir_link }}"
+ln -s "{{ git_project_clone_dir_prev }}" "{{ git_project_clone_dir_link }}"
+
+#
+# Fetch the new version and fix its packages
+#
+
+cd "{{ git_project_clone_dir_last }}"
+unset GIT_DIR
+
+git pull --rebase -f
+if test $? -ne 0; then
+  restore_previous_version
+else
+  npm install
+  if test $? -ne 0; then
+    restore_previous_version
+  fi
+fi
+
+rm "{{ git_project_clone_dir_link }}"
+ln -s "{{ git_project_clone_dir_last }}" "{{ git_project_clone_dir_link }}"
+
+sudo stop  "{{ node_app_name }}"
+sudo start "{{ node_app_name }}"
+
+exit $exit_code
+

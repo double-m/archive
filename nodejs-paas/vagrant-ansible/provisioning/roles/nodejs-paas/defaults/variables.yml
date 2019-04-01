@@ -1,0 +1,19 @@
+git_user: "git"
+git_group: "git"
+git_user_home_dir: "/home/{{ git_user }}"
+git_user_ssh_dir: "{{ git_user_home_dir }}/.ssh"
+git_user_authorized_keys: "{{ git_user_ssh_dir }}/authorized_keys"
+
+git_project_base_dir: "/opt/git"
+git_project_repo_dir: "{{ git_project_base_dir }}/project.git"
+git_project_clone_dir_link: "{{ git_project_base_dir }}/project"
+git_project_clone_dir_last: "{{ git_project_base_dir }}/project.last"
+git_project_clone_dir_prev: "{{ git_project_base_dir }}/project.prev"
+
+node_app_name: "nodejs-app"
+node_app_log_file: "/var/log/{{ node_app_name }}.sys.log"
+node_app_pid_file: "/var/run/{{ node_app_name }}.pid"
+node_app_port: 3000
+
+monit_app_log_file: "/var/log/{{ node_app_name }}.monit.log"
+

@@ -1,0 +1,6 @@
+- name: add an upstart script
+  template: src=upstart_nodejs-app.conf dest="/etc/init/{{ node_app_name }}.conf"
+
+- name: give to git the privileges to use start and stop on nodejs-app
+  template: src=sudoers_git dest="/etc/sudoers.d/{{ git_user }}"
+

@@ -1,0 +1,5 @@
+# Debian related OSs                                                                                                                                                                                               
+---
+- name: Apt clean after installation of packages 
+  shell: apt-get clean
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

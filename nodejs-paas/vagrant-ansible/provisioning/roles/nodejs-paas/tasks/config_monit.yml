@@ -1,0 +1,6 @@
+- name: configure monit to keep up nodejs-app
+  template: src=monit_nodejs-app dest="/etc/monit/conf.d/{{ node_app_name }}"
+
+- name: restart monit
+  service: name=monit state=restarted enabled=yes
+

@@ -1,0 +1,1 @@
+git ALL = (root) NOPASSWD: /sbin/start nodejs-app, /sbin/stop nodejs-app

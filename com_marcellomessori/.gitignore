@@ -1,0 +1,10 @@
+node_modules/
+bower_components/
+dist/
+config/
+!config/**/*.dist
+.tmp/
+.coverage/
+
+npm-debug.log
+myData.json

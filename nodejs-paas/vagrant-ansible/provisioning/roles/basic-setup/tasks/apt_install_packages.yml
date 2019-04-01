@@ -1,0 +1,45 @@
+# Debian related OSs                                                                                                                                                                                               
+---
+- name: Install some common Ubuntu or Debian packages that we want on any server. 
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+  action: apt name={{ item }} state=present
+  with_items:
+    - bash-completion
+    - gawk
+    - git
+    - htop
+    - iftop
+    - iotop
+    - less
+    - links
+    - lsb-release
+    - lshw
+    - lsof
+    - mc
+    - nmap
+    - ntp
+    - rsync
+    - sudo
+    - sysstat
+    - tcpdump
+    - telnet
+    - traceroute
+    - vim
+    - wget
+    - curl
+
+- name: Install some common Ubuntu packages that we want on any server. 
+  when: ansible_distribution == 'Ubuntu'
+  action: apt name={{ item }} state=present
+  with_items:
+    - ubuntu-keyring
+    - linux-tools-common
+
+- name: Install some common Debian packages that we want on any server. 
+  when: ansible_distribution == 'Debian'
+  action: apt name={{ item }} state=present
+  with_items:
+    - linux-tools
+    - debian-archive-keyring
+    - debian-keyring
+

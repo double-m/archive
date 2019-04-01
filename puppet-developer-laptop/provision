@@ -1,0 +1,34 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+  echo "Missing argument, expected a folder containing customization"
+  exit 1
+fi
+
+CUSTOM_DIR=`pwd`/$1
+
+set -e
+set -x
+
+TMP_DIR=/tmp/puppet-developer-laptop-master
+
+if [ -d $TMP_DIR ]; then
+  rm -fR $TMP_DIR
+fi
+
+mkdir $TMP_DIR  
+cd $TMP_DIR
+
+wget --quiet https://github.com/backuitist/puppet-developer-laptop/archive/master.zip
+unzip -q master.zip
+
+rm -f master.zip
+cd puppet-developer-laptop-master
+
+mkdir -p modules/custom
+eval EXPANDED_DIR=$CUSTOM_DIR/*
+cp -r $EXPANDED_DIR modules/custom
+
+./install.sh
+
+rm -fR $TMP_DIR

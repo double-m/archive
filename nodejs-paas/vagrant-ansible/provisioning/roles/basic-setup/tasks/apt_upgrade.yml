@@ -1,0 +1,5 @@
+# Debian related OSs                                                                                                                                                                                               
+---
+- name: Apt upgrade
+  action: apt upgrade=full
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
